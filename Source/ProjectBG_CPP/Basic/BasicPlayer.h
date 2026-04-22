@@ -48,9 +48,13 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> IA_Look;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	TObjectPtr<UInputAction> IA_Jump;
+
 
 	//Input Callback
 	void Move(const FInputActionValue& Value);
 
 	void Look(const FInputActionValue& Value);
+
 };
