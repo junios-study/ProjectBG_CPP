@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "EnhancedInputComponent.h"
 
 // Sets default values
 ABasicPlayer::ABasicPlayer()
@@ -45,5 +46,23 @@ void ABasicPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	UEnhancedInputComponent* UIC = Cast<UEnhancedInputComponent>(PlayerInputComponent);
+
+	if (UIC)
+	{
+		UIC->BindAction(IA_Move, ETriggerEvent::Triggered, this, &ABasicPlayer::Move);
+		UIC->BindAction(IA_Look, ETriggerEvent::Triggered, this, &ABasicPlayer::Look);
+	}
 }
+
+void ABasicPlayer::Move(const FInputActionValue& Value)
+{
+
+}
+
+void ABasicPlayer::Look(const FInputActionValue& Value)
+{
+
+}
+
 

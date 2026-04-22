@@ -4,10 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "InputActionValue.h"
+
 #include "BasicPlayer.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
+class UInputAction;
 
 UCLASS()
 class PROJECTBG_CPP_API ABasicPlayer : public ACharacter
@@ -29,10 +32,25 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<USpringArmComponent> SpringArm;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<UCameraComponent> Camera;
+
+
+
+
+	//Input°ª 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	TObjectPtr<UInputAction> IA_Move;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	TObjectPtr<UInputAction> IA_Look;
+
+
+	//Input Callback
+	void Move(const FInputActionValue& Value);
+
+	void Look(const FInputActionValue& Value);
 };
