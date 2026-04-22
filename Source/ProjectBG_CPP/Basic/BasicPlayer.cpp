@@ -2,12 +2,27 @@
 
 
 #include "BasicPlayer.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Components/CapsuleComponent.h"
 
 // Sets default values
 ABasicPlayer::ABasicPlayer()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+	SpringArm->SetupAttachment(RootComponent);
+
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(SpringArm);
+
+	GetMesh()->SetRelativeLocationAndRotation(
+		FVector(0, 0, -GetCapsuleComponent()->GetScaledCapsuleHalfHeight()),
+		FRotator(0, -90.f, 0)
+	);
 
 }
 

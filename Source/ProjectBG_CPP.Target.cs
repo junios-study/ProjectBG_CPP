@@ -8,8 +8,9 @@ public class ProjectBG_CPPTarget : TargetRules
 	public ProjectBG_CPPTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		DefaultBuildSettings = BuildSettingsVersion.V6;
+        DefaultBuildSettings = BuildSettingsVersion.Latest;
+        IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 
-		ExtraModuleNames.AddRange( new string[] { "ProjectBG_CPP" } );
+        ExtraModuleNames.AddRange( new string[] { "ProjectBG_CPP" } );
 	}
 }

@@ -8,8 +8,9 @@ public class ProjectBG_CPPEditorTarget : TargetRules
 	public ProjectBG_CPPEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-		DefaultBuildSettings = BuildSettingsVersion.V6;
+		DefaultBuildSettings = BuildSettingsVersion.Latest;
+        IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 
-		ExtraModuleNames.AddRange( new string[] { "ProjectBG_CPP" } );
+        ExtraModuleNames.AddRange( new string[] { "ProjectBG_CPP" } );
 	}
 }
