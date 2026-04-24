@@ -16,9 +16,9 @@ class PROJECTBG_CPP_API UBasicAnimInstance : public UAnimInstance
 
 public:
 
-	virtual void NativeInitializeAnimation() override;
+	//virtual void NativeInitializeAnimation() override;
 
-	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
+	//virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 	
 	virtual void NativeThreadSafeUpdateAnimation(float DeltaSeconds) override;
 
@@ -27,6 +27,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 	float Direction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	float LeanAngle = 0;
 };
 
 
