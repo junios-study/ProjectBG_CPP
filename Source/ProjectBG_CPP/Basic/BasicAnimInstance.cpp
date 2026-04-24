@@ -30,5 +30,15 @@ void UBasicAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 		TargetLeanAngle = Player->TargetLeanAngle;
 
 		CurrentLeanAngle = FMath::FInterpTo(CurrentLeanAngle, TargetLeanAngle, DeltaSeconds, 5.0f);
+
+		if (Player->bIsBigHead)
+		{
+			CurrentBigHeadScale = FMath::FInterpTo(CurrentBigHeadScale, BigHeadScale, DeltaSeconds, 10.0f);
+		}
+		else
+		{
+			CurrentBigHeadScale = FMath::FInterpTo(CurrentBigHeadScale, 1.0f, DeltaSeconds, 10.0f);
+		}
+
 	}
 }

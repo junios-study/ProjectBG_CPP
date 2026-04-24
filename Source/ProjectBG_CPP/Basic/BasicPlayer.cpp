@@ -64,6 +64,12 @@ void ABasicPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	}
 }
 
+void ABasicPlayer::BigHead()
+{
+	//bIsBigHead = bIsBigHead ? false : true;
+	bIsBigHead = ~bIsBigHead;
+}
+
 void ABasicPlayer::Move(const FInputActionValue& Value)
 {
 	FVector2D Direction = Value.Get<FVector2D>();

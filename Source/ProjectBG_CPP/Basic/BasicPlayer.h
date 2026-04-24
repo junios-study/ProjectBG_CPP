@@ -55,6 +55,10 @@ public:
 	TObjectPtr<UInputAction> IA_Lean;
 
 
+	UFUNCTION(Exec)
+	void BigHead();
+
+
 	//Input Callback
 	void Move(const FInputActionValue& Value);
 
@@ -63,7 +67,10 @@ public:
 	void Lean(const FInputActionValue& Value);
 
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Stat")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
 	float TargetLeanAngle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
+	uint8 bIsBigHead : 1 = false;
 
 };
