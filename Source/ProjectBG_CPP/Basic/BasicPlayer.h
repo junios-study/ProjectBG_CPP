@@ -64,6 +64,6 @@ public:
 
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Stat")
-	float LeanAngle;
+	float TargetLeanAngle;
 
 };

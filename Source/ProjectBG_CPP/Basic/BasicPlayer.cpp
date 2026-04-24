@@ -9,6 +9,7 @@
 #include "EnhancedInputComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "../ProjectBG_CPP.h"
 
 // Sets default values
 ABasicPlayer::ABasicPlayer()
@@ -55,6 +56,7 @@ void ABasicPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 		UIC->BindAction(IA_Move, ETriggerEvent::Triggered, this, &ABasicPlayer::Move);
 		UIC->BindAction(IA_Look, ETriggerEvent::Triggered, this, &ABasicPlayer::Look);
 		UIC->BindAction(IA_Lean, ETriggerEvent::Triggered, this, &ABasicPlayer::Lean);
+		UIC->BindAction(IA_Lean, ETriggerEvent::Completed, this, &ABasicPlayer::Lean);
 
 		UIC->BindAction(IA_Jump, ETriggerEvent::Triggered, this, &ABasicPlayer::Jump);
 		UIC->BindAction(IA_Jump, ETriggerEvent::Completed, this, &ABasicPlayer::StopJumping);
@@ -105,7 +107,9 @@ void ABasicPlayer::Lean(const FInputActionValue& Value)
 {
 	float Direction = Value.Get<float>();
 
-	LeanAngle = 30.0f * Direction;
+	TargetLeanAngle = 30.0f * Direction;
+
+	UE_LOG(LogProjectBG, Log, TEXT("Direction %f"), Direction);
 }	
 
 

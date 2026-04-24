@@ -3,4 +3,7 @@
 #include "ProjectBG_CPP.h"
 #include "Modules/ModuleManager.h"
 
+
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, ProjectBG_CPP, "ProjectBG_CPP" );
+
+DEFINE_LOG_CATEGORY(LogProjectBG);

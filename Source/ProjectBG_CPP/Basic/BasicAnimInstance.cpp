@@ -27,6 +27,8 @@ void UBasicAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 		Speed = Player->GetCharacterMovement()->Velocity.Size2D();
 		Direction = UKismetAnimationLibrary::CalculateDirection(Player->GetCharacterMovement()->Velocity, Player->GetActorRotation());
 
-		LeanAngle = Player->LeanAngle;
+		TargetLeanAngle = Player->TargetLeanAngle;
+
+		CurrentLeanAngle = FMath::FInterpTo(CurrentLeanAngle, TargetLeanAngle, DeltaSeconds, 5.0f);
 	}
 }
