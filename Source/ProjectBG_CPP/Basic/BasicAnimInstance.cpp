@@ -47,6 +47,9 @@ void UBasicAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 		AimPitch = Player->GetBaseAimRotation().Pitch;
 		AimYaw = Player->GetBaseAimRotation().Yaw;
 
+		bIsWeaponEqipped = Player->bIsWeaponEqipped;
+		CurrentPoseState = Player->CurrentPoseState;
+
 		//UE_LOG(LogTemp, Warning, TEXT("Pitch %f,Yaw %f"), AimPitch, AimYaw);
 
 	}

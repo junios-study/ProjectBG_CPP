@@ -12,6 +12,15 @@ class USpringArmComponent;
 class UCameraComponent;
 class UInputAction;
 
+UENUM(BlueprintType)
+enum class EPoseState : uint8
+{
+	Stand = 0 UMETA(DisplayName="Stand"),
+	Crouch = 10 UMETA(DisplayName = "Crouch"),
+	Prone = 20 UMETA(DisplayName = "Prone")
+};
+
+
 UCLASS()
 class PROJECTBG_CPP_API ABasicPlayer : public ACharacter
 {
@@ -74,5 +83,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
 	uint8 bIsBigHead : 1 = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
+	EPoseState CurrentPoseState = EPoseState::Stand;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
+	uint8 bIsWeaponEqipped : 1 = false;
 
 };
