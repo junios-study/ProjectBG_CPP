@@ -40,5 +40,14 @@ void UBasicAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 			CurrentBigHeadScale = FMath::FInterpTo(CurrentBigHeadScale, 1.0f, DeltaSeconds, 10.0f);
 		}
 
+
+		//AimPitch = Player->GetAimOffset().Pitch;
+		//AimYaw = Player->GetAimOffset().Yaw;
+
+		AimPitch = Player->GetBaseAimRotation().Pitch;
+		AimYaw = Player->GetBaseAimRotation().Yaw;
+
+		//UE_LOG(LogTemp, Warning, TEXT("Pitch %f,Yaw %f"), AimPitch, AimYaw);
+
 	}
 }

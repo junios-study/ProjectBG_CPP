@@ -118,5 +118,16 @@ void ABasicPlayer::Lean(const FInputActionValue& Value)
 	UE_LOG(LogProjectBG, Log, TEXT("Direction %f"), Direction);
 }	
 
+FRotator ABasicPlayer::GetAimOffset() const
+{
+	//AimRotaion World->Local
+
+	const FVector AimDirWorldSpace = GetBaseAimRotation().Vector();
+	const FVector AimDirLocalSpace = ActorToWorld().InverseTransformVectorNoScale(AimDirWorldSpace);
+	const FRotator AimRotLocalSpace = AimDirLocalSpace.Rotation();
+
+	return AimRotLocalSpace;
+}
+
 
 

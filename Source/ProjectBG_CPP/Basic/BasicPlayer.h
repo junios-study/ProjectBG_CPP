@@ -66,6 +66,8 @@ public:
 
 	void Lean(const FInputActionValue& Value);
 
+	FRotator GetAimOffset() const;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
 	float TargetLeanAngle;
