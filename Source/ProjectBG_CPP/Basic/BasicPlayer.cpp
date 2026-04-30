@@ -132,15 +132,60 @@ FRotator ABasicPlayer::GetAimOffset() const
 	return AimRotLocalSpace;
 }
 
-void ABasicPlayer::ApplyCombo()
+void ABasicPlayer::CheckCombo()
 {
-	ComboCount++;
+	if (PlayingComboIndex != ComboCount)
+	{
+		PlayComboMontage();
+		PlayingComboIndex = ComboCount;
+	}
+}
 
-	ComboCount = FMath::Clamp(ComboCount, 0, 3);
+void ABasicPlayer::ComboAttack()
+{
+	if (!bIsAttacking)
+	{
+		ComboCount++;
 
-	FString SectionName = FString::Printf(TEXT("Attack0%d"), ComboCount);
+		PlayComboMontage();
 
-	PlayAnimMontage(ComboMontage, 1.0f, FName(SectionName));
+		bIsAttacking = true;
+
+		PlayingComboIndex = ComboCount;
+
+
+	}
+	else if (bIsAttacking && PlayingComboIndex == ComboCount)
+	{
+		ComboCount++;
+	}
+}
+
+
+void ABasicPlayer::PlayComboMontage()
+{
+	if (UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance())
+	{
+		FString SectionName = FString::Printf(TEXT("Attack0%d"), ComboCount);
+
+		float MontageLength = PlayAnimMontage(ComboMontage, 1.0f, FName(SectionName));
+
+		if (MontageLength > 0)
+		{
+			FOnMontageEnded EndDelegate;
+
+			EndDelegate.BindLambda([this](UAnimMontage* Montage, bool bInterrupted) {
+				if (!bInterrupted)
+				{
+					UE_LOG(LogTemp, Warning, TEXT("EndDelegate"));
+					ComboCount = 0;
+					PlayingComboIndex = 0;
+					bIsAttacking = false;
+				}
+				});
+			AnimInstance->Montage_SetEndDelegate(EndDelegate);
+		}
+	}
 }
 
 

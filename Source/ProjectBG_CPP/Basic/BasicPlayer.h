@@ -95,8 +95,19 @@ public:
 	uint8 ComboCount = 0;
 
 	UFUNCTION(BlueprintCallable)
-	void ApplyCombo();
+	void CheckCombo();
+
+	UFUNCTION(BlueprintCallable)
+	void ComboAttack();
+
+	void PlayComboMontage();
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
 	TObjectPtr<UAnimMontage> ComboMontage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
+	uint8 bIsAttacking : 1 = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
+	uint8 PlayingComboIndex = 0;
 };

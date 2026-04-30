@@ -16,7 +16,7 @@ void UAnimNotify_CheckCombo_CPP::Notify(USkeletalMeshComponent* MeshComp, UAnimS
 	ABasicPlayer* Pawn = Cast<ABasicPlayer>(MeshComp->GetOwner());
 	if (Pawn)
 	{
-		Pawn->ApplyCombo();
+		Pawn->CheckCombo();
 	}
 
 }
