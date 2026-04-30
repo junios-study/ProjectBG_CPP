@@ -116,6 +116,9 @@ void ABasicPlayer::Lean(const FInputActionValue& Value)
 	TargetLeanAngle = 30.0f * Direction;
 
 	UE_LOG(LogProjectBG, Log, TEXT("Direction %f"), Direction);
+
+	//GetMesh()->GetAnimInstance()->Montage_Play()
+	//PlayAnimMontage();
 }	
 
 FRotator ABasicPlayer::GetAimOffset() const
@@ -127,6 +130,17 @@ FRotator ABasicPlayer::GetAimOffset() const
 	const FRotator AimRotLocalSpace = AimDirLocalSpace.Rotation();
 
 	return AimRotLocalSpace;
+}
+
+void ABasicPlayer::ApplyCombo()
+{
+	ComboCount++;
+
+	ComboCount = FMath::Clamp(ComboCount, 0, 3);
+
+	FString SectionName = FString::Printf(TEXT("Attack0%d"), ComboCount);
+
+	PlayAnimMontage(ComboMontage, 1.0f, FName(SectionName));
 }
 
 

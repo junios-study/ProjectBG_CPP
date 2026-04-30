@@ -2,7 +2,7 @@
 
 
 #include "AnimNotify_CheckCombo_CPP.h"
-
+#include "BasicPlayer.h"
 
 //FString UAnimNotify_CheckCombo_CPP::GetNotifyName_Implementation() const
 //{
@@ -13,6 +13,10 @@ void UAnimNotify_CheckCombo_CPP::Notify(USkeletalMeshComponent* MeshComp, UAnimS
 {
 	Super::Notify(MeshComp, Animation, EventReference);
 
-	//캐릭터 주먹 체크 
-	UE_LOG(LogTemp, Warning, TEXT("UAnimNotify_CheckCombo_CPP::Notify"));
+	ABasicPlayer* Pawn = Cast<ABasicPlayer>(MeshComp->GetOwner());
+	if (Pawn)
+	{
+		Pawn->ApplyCombo();
+	}
+
 }

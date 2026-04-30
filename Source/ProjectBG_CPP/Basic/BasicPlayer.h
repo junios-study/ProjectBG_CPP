@@ -90,4 +90,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
 	uint8 bIsWeaponEqipped : 1 = false;
 
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
+	uint8 ComboCount = 0;
+
+	UFUNCTION(BlueprintCallable)
+	void ApplyCombo();
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
+	TObjectPtr<UAnimMontage> ComboMontage;
 };
