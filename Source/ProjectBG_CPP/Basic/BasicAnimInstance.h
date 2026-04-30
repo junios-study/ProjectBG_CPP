@@ -55,6 +55,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stat")
 	uint8 bIsWeaponEqipped : 1 = false;
+
+	UFUNCTION()
+	void AnimNotify_CheckCombo_SK_CPP();
 };
 
 

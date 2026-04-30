@@ -54,3 +54,9 @@ void UBasicAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 
 	}
 }
+
+void UBasicAnimInstance::AnimNotify_CheckCombo_SK_CPP()
+{
+	UE_LOG(LogTemp, Warning, TEXT("AnimNotify_CheckCombo_SK_CPP"));
+
+}
